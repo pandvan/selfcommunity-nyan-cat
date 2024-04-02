@@ -12,10 +12,13 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
-  - host: localhost
-    http:
-      paths:
-        - backend:
-            serviceName: nyan-service
-            servicePort: 80
-          path: /nyan/?(.*)
+    - host: localhost
+      http:
+        paths:
+          - pathType: Prefix
+            path: /nyan/?(.*)
+            backend:
+              service:
+                name: nyan-service
+                port:
+                  number: 80
