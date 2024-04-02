@@ -7,16 +7,14 @@ metadata:
     app: nyan-cat
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^(/nyan)$ $1/ permanent;
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$1/
 spec:
   rules:
     - host: localhost
       http:
         paths:
-          - pathType: Prefix
-            path: /nyan/?(.*)
+          - pathType: ImplementationSpecific
+            path: /(nyan)(/|$)
             backend:
               service:
                 name: nyan-service
