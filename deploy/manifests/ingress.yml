@@ -15,7 +15,7 @@ spec:
   - host: localhost
     http:
       paths:
-      - backend:
-          serviceName: nyan-service
-          servicePort: 80
-        path: /nyan/?(.*)
+        - backend:
+            serviceName: nyan-service
+            servicePort: 80
+          path: /nyan/?(.*)
