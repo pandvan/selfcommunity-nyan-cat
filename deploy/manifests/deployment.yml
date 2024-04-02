@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: nyan-deployment
   labels:
-    app: nyan
+    app: nyan-cat
 spec:
   replicas: 1
   selector:
@@ -13,15 +13,17 @@ spec:
   template:
     metadata:
       labels:
-        app: nyan
+        app: nyan-cat
     spec:
       containers:
         - name: nyan
-          image: daviey/nyan-cat-web:latest
+          # image: daviey/nyan-cat-web:latest  # x86
+          image: jonasbg/nyancat:latest  # ARM64
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              containerPort: 80
+              # containerPort: 80
+              containerPort: 8080  # ARM64
               protocol: TCP
           livenessProbe:
             httpGet:
