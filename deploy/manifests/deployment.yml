@@ -17,13 +17,13 @@ spec:
     spec:
       containers:
         - name: nyan
-          # image: daviey/nyan-cat-web:latest  # x86
-          image: jonasbg/nyancat:latest  # ARM64
+          image: daviey/nyan-cat-web:latest  # x86
+          # image: jonasbg/nyancat:latest  # ARM64
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
-              # containerPort: 80
-              containerPort: 8080  # ARM64
+              containerPort: 80  # x86
+              # containerPort: 8080  # ARM64
               protocol: TCP
           livenessProbe:
             httpGet:
